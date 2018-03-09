@@ -1,0 +1,36 @@
+extern printf
+extern scanf
+section .data
+    st: db "%d",0
+    inp1:dd 0
+    inp2:dd 0
+    
+
+section .text
+    global main
+    main:
+    push ebp
+    mov ebp,esp
+    
+    push inp1
+    push st
+    call scanf
+    
+    push inp2
+    push st
+    call scanf
+    
+    mov eax,[inp1]
+    mov ebx,[inp2]
+    
+    add eax,ebx
+
+    push eax
+    push st
+    call printf
+
+    leave
+    ret
+
+
+
