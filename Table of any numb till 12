@@ -1,0 +1,48 @@
+extern scanf
+extern printf
+
+section .data
+	no: dd 0
+	t: db "%d",0
+	l: db 10,0
+	p: db "Table of %d",10,0
+	
+section .text
+	global main
+	main:
+
+	
+	push ebp
+	mov ebp,esp
+
+	push no
+	push t
+	call scanf
+
+	mov ebx,1
+	
+	
+	push dword[no]
+	push p
+	call printf	
+	
+	s:
+	
+	mov ecx,[no]
+	
+	imul ecx,ebx
+	
+	
+	push ecx
+	push t
+	call printf
+
+	push l
+	call printf
+
+	inc ebx
+	cmp ebx,13
+	jne s
+		
+	leave
+	ret
