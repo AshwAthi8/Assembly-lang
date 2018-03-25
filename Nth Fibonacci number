@@ -1,0 +1,60 @@
+extern printf
+extern scanf
+
+
+section .data
+	c: db "%d",0
+	a: dd 0
+	
+section .text
+ 
+	global main 
+	main:
+
+	push ebp
+	mov ebp,esp
+	
+	push a
+	push c
+	call scanf
+
+	mov ebx,0
+	mov eax,1
+	mov ecx,dword[a]
+
+	
+	cmp ecx,1
+	je fib
+	
+
+	fib1:
+	mov edx,eax
+	add eax,ebx
+	mov ebx,edx
+
+	dec ecx
+	cmp ecx,1
+	jne fib1
+	
+
+	push ebx
+	push c 
+	call printf
+	leave
+	ret
+
+	
+	fib:
+	push ebx 
+	push c 
+	call printf
+	
+	leave 
+	ret
+	
+	
+
+	
+	
+
+
