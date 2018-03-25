@@ -1,0 +1,42 @@
+extern printf
+extern scanf
+ 
+section .data
+
+	n: dd 0
+	out:db "%d",0
+	p: dd 0 
+
+section .text
+
+	global main
+	main:
+
+	push ebp
+	mov ebp,esp
+
+	push n
+	push out
+	call scanf
+
+	push p
+	push out
+	call scanf
+	
+	mov ebx,dword[n]
+
+	mov edx,1
+	mov ecx,0
+
+	power:
+	imul edx,ebx 
+	inc ecx
+	cmp ecx,dword[p]
+	jne power
+
+	push edx
+	push out
+	call printf 
+
+	leave
+	ret
